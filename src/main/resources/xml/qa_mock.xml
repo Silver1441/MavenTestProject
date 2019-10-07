@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product_list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="product_list.xsd">
+
+    <category id ="110002" name = "accessories">
+        <subcategory id ="220003" name = "cases">
+            <article id ="200101" stock = "12">
+                <manufacturer>Super cases</manufacturer>
+                <model>CB023</model>
+                <production_date>18-03-2016</production_date>
+                <color>black</color>
+                <price>1199</price>
+            </article>
+
+            <article id ="200202" stock = "6">
+                <manufacturer>Pela</manufacturer>
+                <model>ES909</model>
+                <production_date>05-05-2019</production_date>
+                <color>transparent</color>
+                <price>1799</price>
+            </article>
+        </subcategory>
+    </category>
+</product_list>
