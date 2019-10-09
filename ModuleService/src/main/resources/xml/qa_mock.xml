@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product_list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:noNamespaceSchemaLocation="product_list.xsd">
-
-    <category id ="110002" name = "accessories">
+    <category id ="110001" name = "accessories">
         <subcategory id ="220003" name = "cases">
             <article id ="200101" stock = "12">
                 <manufacturer>Super cases</manufacturer>

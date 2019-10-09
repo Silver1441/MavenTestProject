@@ -23,6 +23,13 @@
                     <include>**/*.properties</include>
                 </includes>
             </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/xml/*.xml</include>
+                </includes>
+            </resource>
         </resources>
 
         <plugins>
@@ -35,35 +42,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>
-                                ${basedir}/target/resources
-                            </outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/resources</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>src/main/resources/xml</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -96,14 +74,14 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <defaultPath>productionPath</defaultPath>
+                <defaultPath>xml/production_mock.xml</defaultPath>
             </properties>
         </profile>
 
         <profile>
             <id>qa</id>
             <properties>
-                <defaultPath>qaPath</defaultPath>
+                <defaultPath>xml/qa_mock.xml</defaultPath>
             </properties>
         </profile>
     </profiles>

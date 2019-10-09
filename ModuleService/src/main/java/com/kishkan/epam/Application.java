@@ -1,63 +1,41 @@
 package com.kishkan.epam;
 
-import java.io.FileInputStream;
+import com.kishkan.epam.service.XmlUnmarshaller;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import com.kishkan.epam.dto.Category;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.stream.XMLStreamException;
 
 public class Application {
     public static void main(String[] args) {
         Application app = new Application();
-//        Properties prop = app.loadPropertiesFile("config.properties");
-        System.out.println(app.getPath());
+        XmlUnmarshaller xmlUnmarshaller = new XmlUnmarshaller();
+        String source = app.getPath();
 
+        System.out.println(source);
+
+        try {
+            Category resultDto = xmlUnmarshaller.unmarshalXmlById(source, Category.class, 110001L);
+            System.out.println(resultDto);
+        } catch (XMLStreamException | JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
-//    private String getPath() {
-//        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
-//
-//            Properties prop = new Properties();
-//
-//            if (input == null) {
-//                System.out.println("unable to find config.properties");
-//            }
-//
-//            prop.load(input);
-//
-//            return  prop.getProperty("path");
-//
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        return "не нашел файл";
-//    }
-
     private String getPath() {
-        try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
-            Properties prop = new Properties();
-            prop.load(input);
-
-            return  prop.getProperty("path");
-
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
+            Properties properties = new Properties();
+            properties.load(input);
+            return  properties.getProperty("path");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        return "не нашел файл";
+        return null;
     }
 
-//    public Properties loadPropertiesFile(String filePath) {
-//
-//        Properties prop = new Properties();
-//
-//        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
-//            prop.load(resourceAsStream);
-//        } catch (IOException e) {
-//            System.err.println("Unable to load properties file : " + filePath);
-//        }
-//
-//        return prop;
-//
-//    }
+
 }

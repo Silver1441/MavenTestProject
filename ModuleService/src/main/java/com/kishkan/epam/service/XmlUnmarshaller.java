@@ -7,14 +7,18 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.transform.stream.StreamSource;
+import java.io.InputStream;
 
 public class XmlUnmarshaller {
+
 
     public <T> T unmarshalXmlById(String source, Class<T> valueClass, Long id)
             throws XMLStreamException, JAXBException {
 
-        XMLStreamReader xmlStreamReader = XMLInputFactory.newFactory().createXMLStreamReader(new StreamSource(source));
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(source);
+
+        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(inputStream);
         xmlStreamReader.nextTag();
 
         while (xmlStreamReader.hasNext()) {
